@@ -1,0 +1,14 @@
+pipeline {
+    agent {label 'ansible-controller'}
+    stages {
+        stage('Validate if jenkins can execute ansible') {
+            steps {
+                sh '''
+                ansible --version
+                ansible-playbook --version
+                ansible-galaxy --version
+                '''
+                }
+        }
+    }
+}
